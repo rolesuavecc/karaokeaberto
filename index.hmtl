@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>KARAOKÊ DO BRISA • by Rolê Suave</title>
+  
+  <!-- Fontes Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Ícones Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Gerador de QR Code -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- YouTube IFrame Player API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              yellow: '#FACC15',
+              darkyellow: '#EAB308',
+              gold: '#FDE047',
+              bg: '#0A0A0A',
+              card: '#121212',
+              cardHover: '#1A1A1A',
+              border: '#27272A'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --primary-color: #FACC15;
+      --secondary-color: #EAB308;
+      --bg-color: #0A0A0A;
+      --card-bg: #121212;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: #F4F4F5;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      touch-action: manipulation;
+    }
+
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .brand-glow {
+      box-shadow: 0 0 25px rgba(250, 204, 21, 0.35);
+    }
+
+    .brand-glow-lg {
+      box-shadow: 0 0 50px rgba(250, 204, 21, 0.45);
+    }
+
+    .brand-text-glow {
+      text-shadow: 0 0 16px rgba(250, 204, 21, 0.6);
+    }
+
+    .brand-border {
+      border-color: rgba(250, 204, 21, 0.25);
+    }
+
+    .brand-gradient {
+      background: linear-gradient(135deg, #FACC15 0%, #CA8A04 100%);
+    }
+
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #121212;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #27272A;
+      border-radius: 9999px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #FACC15;
+    }
+
+    .eq-bar {
+      display: inline-block;
+      width: 3.5px;
+      background-color: #FACC15;
+      border-radius: 2px;
+      animation: eqBounce 1.1s ease-in-out infinite alternate;
+    }
+    .eq-bar:nth-child(2) { animation-delay: 0.15s; }
+    .eq-bar:nth-child(3) { animation-delay: 0.3s; }
+    .eq-bar:nth-child(4) { animation-delay: 0.45s; }
+    .eq-bar:nth-child(5) { animation-delay: 0.6s; }
+
+    @keyframes eqBounce {
+      0% { height: 4px; }
+      100% { height: 18px; }
+    }
+
+    .ambient-glow-bg {
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(250, 204, 21, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#0A0A0A] text-slate-100 flex flex-col selection:bg-brand-yellow selection:text-black">
+
+  <!-- ============================================================
+       VISÃO 1: MESA DO OPERADOR / DJ (Visão Padrão no Desktop)
+       ============================================================ -->
+  <div id="admin-view" class="relative z-10 flex flex-col flex-grow">
+    <div class="ambient-glow-bg"></div>
+
+    <!-- Barra Superior -->
+    <header class="border-b border-zinc-800/80 bg-[#121212]/90 backdrop-blur-md sticky top-0 z-40 px-4 py-3">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
+        <!-- Logo e Título -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl brand-gradient flex items-center justify-center font-black text-black text-lg brand-glow">
+            <i data-lucide="mic" class="w-5 h-5 text-black"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-base sm:text-lg font-black font-display tracking-tight text-white leading-none">
+                KARAOKÊ DO BRISA
+              </h1>
+              <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-brand-yellow/20 text-brand-yellow border border-brand-yellow/40">
+                LIVE
+              </span>
+            </div>
+            <p class="text-xs font-semibold text-zinc-400 mt-0.5">by Rolê Suave</p>
+          </div>
+        </div>
+
+        <!-- Ações do Cabeçalho -->
+        <div class="flex items-center gap-2">
+          <!-- Abrir Projetor / 2ª Tela -->
+          <button onclick="openProjectorWindow()" class="px-3 py-2 rounded-xl brand-gradient text-black text-xs font-black flex items-center gap-2 brand-glow hover:opacity-95 transition-all" title="Abre janela para arrastar ao projetor ou HDMI">
+            <i data-lucide="monitor" class="w-4 h-4"></i>
+            <span class="hidden sm:inline">Abrir Projetor (2ª Tela)</span>
+            <span class="sm:hidden">Projetor</span>
+          </button>
+
+          <!-- QR Code de Pedidos -->
+          <button onclick="openQrModal()" class="px-3 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-200 text-xs font-bold border border-zinc-700 flex items-center gap-1.5 transition-all">
+            <i data-lucide="qr-code" class="w-4 h-4 text-brand-yellow"></i>
+            <span class="hidden sm:inline">QR Code Pedidos</span>
+          </button>
+
+          <!-- Modo Celular Demo -->
+          <button onclick="switchToGuestView()" class="px-3 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-400 text-xs font-semibold border border-zinc-800 flex items-center gap-1.5 transition-all" title="Ver tela do celular">
+            <i data-lucide="smartphone" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Conteúdo Principal da Mesa -->
+    <main class="max-w-7xl mx-auto p-4 sm:p-6 w-full flex-grow grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10">
+      
+      <!-- COLUNA ESQUERDA: Player e Palco Atual (7 colunas) -->
+      <section class="lg:col-span-7 flex flex-col gap-5">
+        
+        <!-- Cartão do Palco Atual -->
+        <div class="p-5 rounded-2xl bg-[#121212] border brand-border relative overflow-hidden brand-glow">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase brand-gradient text-black">
+                NO PALCO AGORA
+              </span>
+              <div id="admin-eq" class="hidden flex items-end gap-1 h-3.5 px-1 bg-black/60 rounded">
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+              </div>
+            </div>
+            <span id="player-status-badge" class="text-xs font-bold text-zinc-400 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-zinc-500"></span> Aguardando início
+            </span>
+          </div>
+
+          <div class="mb-4">
+            <h2 id="current-singer-name" class="text-2xl sm:text-3xl font-black font-display text-white tracking-tight truncate">
+              Ninguém cantando no momento
+            </h2>
+            <p id="current-song-title" class="text-sm font-semibold text-brand-yellow truncate mt-0.5">
+              Adicione músicas à fila abaixo para começar o show
+            </p>
+          </div>
+
+          <!-- Container do Player YouTube do Operador -->
+          <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-black border border-zinc-800 shadow-2xl">
+            <div id="youtube-player" class="w-full h-full"></div>
+            <div id="player-placeholder" class="absolute inset-0 bg-zinc-950 flex flex-col items-center justify-center p-6 text-center">
+              <div class="w-14 h-14 rounded-2xl bg-zinc-900 border border-zinc-800 flex items-center justify-center mb-3">
+                <i data-lucide="music" class="w-7 h-7 text-brand-yellow"></i>
+              </div>
+              <p class="text-sm font-bold text-zinc-300">O player está pronto</p>
+              <p class="text-xs text-zinc-500 mt-1 max-w-sm">Adicione um link do YouTube ou escolha uma sugestão para carregar o vídeo com a letra.</p>
+            </div>
+          </div>
+
+          <!-- Controles de Reprodução Rápida -->
+          <div class="flex items-center justify-between gap-2 mt-4 pt-4 border-t border-zinc-800/80">
+            <div class="flex items-center gap-2">
+              <button onclick="playNextSong()" class="px-4 py-2 rounded-xl brand-gradient hover:opacity-95 text-black font-extrabold text-xs flex items-center gap-1.5 transition-all">
+                <i data-lucide="play" class="w-4 h-4 fill-black"></i>
+                <span id="btn-play-label">Iniciar Próxima</span>
+              </button>
+              <button onclick="togglePlayPause()" class="p-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-800 text-xs font-bold transition-all" title="Pausar / Retomar">
+                <i data-lucide="pause" class="w-4 h-4" id="btn-pause-icon"></i>
+              </button>
+              <button onclick="skipIntro()" class="px-3 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-300 border border-zinc-800 text-xs font-bold flex items-center gap-1 transition-all" title="Pula 15s de introdução instrumental">
+                <i data-lucide="fast-forward" class="w-3.5 h-3.5 text-brand-yellow"></i> +15s Intro
+              </button>
+              <button onclick="restartCurrentSong()" class="p-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-400 border border-zinc-800 transition-all" title="Reiniciar Música">
+                <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <button onclick="triggerEndSongWithScore()" class="px-3.5 py-2 rounded-xl bg-red-950/40 hover:bg-red-900/50 text-red-400 border border-red-500/30 text-xs font-bold flex items-center gap-1.5 transition-all" title="Terminar e abrir tela de notas">
+              <i data-lucide="award" class="w-3.5 h-3.5 text-brand-yellow"></i>
+              <span>Encerrar & Dar Nota</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Formulário Rápido de Adição pelo Operador -->
+        <div class="p-4 rounded-2xl bg-[#121212] border border-zinc-800">
+          <h3 class="text-xs font-extrabold text-zinc-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4 text-brand-yellow"></i> Adicionar Música Manualmente
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5">
+            <input id="input-admin-singer" type="text" placeholder="Nome do Cantor(a)" class="sm:col-span-4 bg-zinc-900/90 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-brand-yellow">
+            <input id="input-admin-query" type="text" placeholder="Link ou ID do YouTube (ex: youtu.be/...)" class="sm:col-span-6 bg-zinc-900/90 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-brand-yellow">
+            <button onclick="addSongFromAdmin()" class="sm:col-span-2 px-3 py-2 rounded-xl brand-gradient hover:opacity-95 text-black font-black text-xs flex items-center justify-center gap-1 transition-all">
+              <i data-lucide="plus" class="w-4 h-4"></i> Inserir
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- COLUNA DIREITA: Fila de Espera & Histórico (5 colunas) -->
+      <section class="lg:col-span-5 flex flex-col gap-4">
+        
+        <!-- Painel da Fila -->
+        <div class="p-5 rounded-2xl bg-[#121212] border border-zinc-800 flex flex-col flex-grow">
+          <div class="flex items-center justify-between mb-4 pb-3 border-b border-zinc-800/80">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center">
+                <i data-lucide="list-music" class="w-4 h-4 text-brand-yellow"></i>
+              </div>
+              <h3 class="text-sm font-black font-display text-white uppercase tracking-wider">Fila de Espera</h3>
+            </div>
+            <span id="queue-count-badge" class="px-2.5 py-0.5 rounded-full bg-zinc-900 text-brand-yellow text-xs font-black border border-zinc-800">
+              0 músicas
+            </span>
+          </div>
+
+          <!-- Lista de Músicas na Fila -->
+          <div id="queue-list" class="space-y-2.5 overflow-y-auto max-h-[460px] custom-scroll pr-1 flex-grow">
+            <!-- Renderizado dinamicamente -->
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ============================================================
+       VISÃO 2: TELA DO PROJETOR / TELÃO (Ativada via ?screen=tv ou hash #tv)
+       ============================================================ -->
+  <div id="projector-screen-view" class="hidden fixed inset-0 z-50 bg-black flex flex-col justify-between overflow-hidden">
+    
+    <!-- Barra Superior do Telão -->
+    <div class="absolute top-0 inset-x-0 z-30 p-6 bg-gradient-to-b from-black/95 via-black/70 to-transparent flex items-center justify-between pointer-events-auto">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl brand-gradient text-black flex items-center justify-center brand-glow">
+          <i data-lucide="mic" class="w-6 h-6 text-black"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full brand-gradient text-black tracking-widest">
+              KARAOKÊ DO BRISA
+            </span>
+            <div class="flex items-end gap-1 h-3.5 px-1 bg-black/60 rounded">
+              <span class="eq-bar"></span>
+              <span class="eq-bar"></span>
+              <span class="eq-bar"></span>
+              <span class="eq-bar"></span>
+            </div>
+            <span class="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-500/40">
+              ● Ao Vivo
+            </span>
+          </div>
+          <h2 id="tv-current-singer" class="text-3xl font-black font-display text-white tracking-wide truncate max-w-2xl brand-text-glow">
+            Aguardando Cantor...
+          </h2>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- Badge da próxima canção -->
+        <div id="tv-up-next-badge" class="hidden bg-zinc-950/90 backdrop-blur-md px-4 py-2 rounded-2xl border border-zinc-800 text-right max-w-md">
+          <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-400 block">A Seguir</span>
+          <p id="tv-up-next-singer" class="text-sm font-black text-brand-yellow truncate">Próximo cantor</p>
+          <p id="tv-up-next-title" class="text-[11px] text-zinc-300 truncate">Título da canção</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÁREA DO VÍDEO DO TELÃO -->
+    <div class="relative w-full h-full flex items-center justify-center bg-black">
+      <div id="tv-youtube-player-container" class="w-full h-full">
+        <div id="tv-player" class="w-full h-full pointer-events-none"></div>
+      </div>
+
+      <!-- TELA DE REVELAÇÃO DA NOTA DO TELÃO -->
+      <div id="tv-score-overlay" class="hidden absolute inset-0 z-40 bg-black/90 backdrop-blur-xl flex flex-col items-center justify-center p-8 text-center">
+        <div class="relative z-10 max-w-xl w-full flex flex-col items-center">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-yellow/20 border border-brand-yellow/50 text-brand-yellow text-xs font-black uppercase tracking-widest mb-3">
+            <i data-lucide="award" class="w-4 h-4"></i>
+            <span>Resultado da Performance</span>
+          </div>
+
+          <h2 id="tv-score-singer-name" class="text-4xl md:text-5xl font-black font-display text-white mb-1 brand-text-glow">
+            Nome do Cantor
+          </h2>
+          <p id="tv-score-song-title" class="text-sm text-zinc-400 mb-6 font-medium">Música Cantada</p>
+
+          <!-- NOTA FINAL GERAL -->
+          <div class="p-6 rounded-3xl brand-gradient brand-glow-lg text-black w-full flex flex-col items-center mb-5">
+            <span class="text-xs font-black uppercase tracking-widest text-black/80">NOTA DA PERFORMANCE</span>
+            <div id="tv-score-total-val" class="text-6xl md:text-7xl font-black font-display tracking-tight my-1">
+              9.8
+            </div>
+            <p id="tv-score-feedback-phrase" class="text-sm font-black text-black uppercase tracking-wide">
+              🔥 Deu um show no palco do Brisa!
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2 text-xs text-zinc-400 font-semibold">
+            <span>Próxima música iniciando em:</span>
+            <span id="tv-score-timer-countdown" class="text-brand-yellow font-black text-base px-2 py-0.5 bg-zinc-900 rounded-lg border border-zinc-800">15s</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ESTADO DE ESPERA NO TELÃO (Sem músicas) -->
+      <div id="tv-idle-screen" class="absolute inset-0 bg-[#0A0A0A] flex flex-col items-center justify-center p-8 text-center z-20">
+        <div class="w-20 h-20 rounded-3xl brand-gradient flex items-center justify-center mb-4 brand-glow">
+          <i data-lucide="mic" class="w-10 h-10 text-black"></i>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-black font-display text-white tracking-tight mb-2 brand-text-glow">
+          KARAOKÊ DO BRISA
+        </h1>
+        <p class="text-lg font-bold text-brand-yellow mb-8">by Rolê Suave</p>
+
+        <div class="p-6 rounded-3xl bg-zinc-900/90 border brand-border flex flex-col items-center brand-glow max-w-sm">
+          <div id="tv-idle-qrcode" class="p-3 bg-white rounded-2xl mb-4"></div>
+          <span class="text-sm font-black uppercase tracking-wider text-white">Escaneie para Cantar</span>
+          <span class="text-xs text-zinc-400 mt-1">Peça suas músicas favoritas direto do celular</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       VISÃO 3: TELA MOBILE DE PEDIDOS (Convidado via QR Code: #pedido)
+       ============================================================ -->
+  <div id="guest-screen-view" class="hidden min-h-screen p-4 flex flex-col max-w-md mx-auto relative z-10">
+    <!-- Header Mobile -->
+    <header class="py-4 border-b border-zinc-800 flex items-center justify-between mb-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl brand-gradient flex items-center justify-center brand-glow">
+          <i data-lucide="mic" class="w-5 h-5 text-black"></i>
+        </div>
+        <div>
+          <h1 class="text-base font-black font-display tracking-tight text-white uppercase leading-none">KARAOKÊ DO BRISA</h1>
+          <p class="text-xs font-semibold text-brand-yellow mt-0.5">by Rolê Suave</p>
+        </div>
+      </div>
+      <button onclick="switchToAdminView()" class="text-xs text-zinc-400 hover:text-white px-2.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800">
+        Operador
+      </button>
+    </header>
+
+    <!-- BANNER DE VOTAÇÃO POPULAR MOBILE -->
+    <div id="guest-voting-card" class="hidden mb-5 p-5 rounded-3xl bg-zinc-900 border-2 brand-border brand-glow animate-fade-in relative">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded-full brand-gradient text-black">JÚRI POPULAR</span>
+        <span id="guest-vote-timer" class="px-2 py-0.5 rounded-full bg-brand-yellow/20 text-brand-yellow text-xs font-black">15s</span>
+      </div>
+
+      <h3 id="guest-vote-singer" class="text-lg font-black font-display text-white mb-0.5 truncate">Nome do Cantor</h3>
+      <p id="guest-vote-song" class="text-xs text-zinc-400 mb-4 truncate">Música Cantada</p>
+
+      <div class="grid grid-cols-5 gap-2 mb-3" id="guest-score-buttons">
+        <button onclick="submitGuestScore(6)" class="py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm">6</button>
+        <button onclick="submitGuestScore(7)" class="py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm">7</button>
+        <button onclick="submitGuestScore(8)" class="py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm">8</button>
+        <button onclick="submitGuestScore(9)" class="py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-sm">9</button>
+        <button onclick="submitGuestScore(10)" class="py-2.5 rounded-xl brand-gradient text-black font-black text-sm">10 ⭐</button>
+      </div>
+
+      <div id="guest-voted-feedback" class="hidden text-center py-2 text-brand-yellow font-black text-xs flex items-center justify-center gap-1.5">
+        <i data-lucide="check-circle" class="w-4 h-4"></i>
+        <span>Voto computado com sucesso!</span>
+      </div>
+    </div>
+
+    <!-- Formulário do Pedido Mobile -->
+    <div class="p-5 rounded-3xl bg-[#121212] border border-zinc-800 mb-5">
+      <h2 class="text-base font-black font-display text-white mb-1">Pedir uma Música</h2>
+      <p class="text-xs text-zinc-400 mb-4">Cole o link do YouTube ou digite o nome da música com o cantor.</p>
+
+      <div class="space-y-3">
+        <div>
+          <label class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Seu Nome / Apelido</label>
+          <input id="guest-input-singer" type="text" placeholder="Como quer ser chamado no palco?" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-brand-yellow">
+        </div>
+
+        <div>
+          <label class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-1">Link ou Título do Karaokê</label>
+          <input id="guest-input-song" type="text" placeholder="Cole o link do YouTube ou nome da música" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-brand-yellow">
+        </div>
+
+        <button onclick="submitGuestOrder()" class="w-full py-3 rounded-xl brand-gradient hover:opacity-95 text-black font-black text-sm flex items-center justify-center gap-2 brand-glow transition-all">
+          <i data-lucide="send" class="w-4 h-4"></i>
+          <span>Enviar Pedido para a Fila</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Sugestões Rápidas de Karaokê -->
+    <div class="mb-5">
+      <span class="text-xs font-bold text-zinc-400 uppercase tracking-wider block mb-2.5">Escolhas Rápidas</span>
+      <div class="grid grid-cols-2 gap-2 text-xs">
+        <button onclick="quickPick('Evidências', 'Chitãozinho & Xororó', 'ePjtnST9U-U')" class="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-brand-yellow text-left">
+          <p class="font-bold text-white truncate">Evidências</p>
+          <p class="text-[10px] text-zinc-400 truncate">Chitãozinho & Xororó</p>
+        </button>
+        <button onclick="quickPick('Cheia de Manias', 'Raça Negra', 'h_3Uq5_Uu9Y')" class="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-brand-yellow text-left">
+          <p class="font-bold text-white truncate">Cheia de Manias</p>
+          <p class="text-[10px] text-zinc-400 truncate">Raça Negra</p>
+        </button>
+        <button onclick="quickPick('Anna Júlia', 'Los Hermanos', 'wYcR_k3rB40')" class="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-brand-yellow text-left">
+          <p class="font-bold text-white truncate">Anna Júlia</p>
+          <p class="text-[10px] text-zinc-400 truncate">Los Hermanos</p>
+        </button>
+        <button onclick="quickPick('Temporal', 'Art Popular', 'y41z65f9Y4U')" class="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-brand-yellow text-left">
+          <p class="font-bold text-white truncate">Temporal</p>
+          <p class="text-[10px] text-zinc-400 truncate">Art Popular</p>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE QR CODE (Mesa do Operador) -->
+  <div id="modal-qrcode" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#121212] border brand-border p-6 rounded-3xl max-w-sm w-full text-center brand-glow">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-base font-black font-display text-white">QR Code para os Convidados</h3>
+        <button onclick="closeQrModal()" class="p-1 rounded-lg hover:bg-zinc-800 text-zinc-400">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="p-4 bg-white rounded-2xl inline-block mb-3">
+        <div id="modal-qrcode-container"></div>
+      </div>
+      <p class="text-xs text-zinc-400 mb-3">Aponte a câmera do celular para abrir o cardápio e pedir músicas.</p>
+      <div class="p-2 bg-zinc-900 rounded-xl text-[11px] text-brand-yellow font-mono truncate" id="modal-qr-url-text"></div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-zinc-900 border border-brand-yellow/40 text-white px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3 text-xs font-bold">
+      <i data-lucide="check" class="w-4 h-4 text-brand-yellow"></i>
+      <span id="toast-message">Ação realizada!</span>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT PRINCIPAL -->
+  <script>
+    /* ============================================================
+     * Estado Global da Aplicação
+     * ============================================================ */
+    let player = null;
+    let tvPlayer = null;
+    let isPlayerReady = false;
+    let isTvPlayerReady = false;
+    let isPlaying = false;
+    let appMode = 'admin'; // 'admin', 'tv' ou 'guest'
+
+    let queue = [
+      { id: '1', singer: 'Dudu', title: 'Evidências - Chitãozinho & Xororó (Karaokê)', videoId: 'ePjtnST9U-U' },
+      { id: '2', singer: 'Brisa Crew', title: 'Cheia de Manias - Raça Negra (Karaokê)', videoId: 'h_3Uq5_Uu9Y' }
+    ];
+    let currentSong = null;
+    let votingTimer = null;
+
+    // Canal de Comunicação em Tempo Real entre Janelas
+    const broadcastChannel = ('BroadcastChannel' in window) ? new BroadcastChannel('karaoke_brisa_bus') : null;
+
+    if (broadcastChannel) {
+      broadcastChannel.onmessage = (event) => {
+        handleIncomingMessage(event.data);
+      };
+    }
+
+    window.addEventListener('storage', (event) => {
+      if (event.key === 'karaoke_brisa_event' && event.newValue) {
+        try {
+          const data = JSON.parse(event.newValue);
+          handleIncomingMessage(data);
+        } catch (e) {}
+      }
+    });
+
+    function broadcastAction(action, payload = {}) {
+      const data = { action, ...payload, timestamp: Date.now() };
+      if (broadcastChannel) {
+        broadcastChannel.postMessage(data);
+      }
+      try {
+        localStorage.setItem('karaoke_brisa_event', JSON.stringify(data));
+      } catch (e) {}
+    }
+
+    function handleIncomingMessage(data) {
+      if (!data || !data.action) return;
+
+      if (data.action === 'SYNC_QUEUE') {
+        queue = data.queue || [];
+        currentSong = data.currentSong || null;
+        renderQueue();
+        renderCurrentSong();
+        updateTvDisplays();
+      } else if (data.action === 'NEW_ORDER') {
+        queue.push(data.order);
+        renderQueue();
+        updateTvDisplays();
+        showToast(`Novo pedido de ${data.order.singer}!`);
+      } else if (data.action === 'TRIGGER_SCORE') {
+        showScoreOverlay(data.score, data.singer, data.title);
+      } else if (data.action === 'SUBMIT_VOTE') {
+        showToast('Novo voto da plateia recebido!');
+      }
+    }
+
+    /* ============================================================
+     * Inicialização e Roteamento de Tela
+     * ============================================================ */
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      detectRouteMode();
+      renderQueue();
+      initQrCodes();
+    });
+
+    function detectRouteMode() {
+      const hash = window.location.hash.toLowerCase();
+      const params = new URLSearchParams(window.location.search);
+      const screen = params.get('screen');
+
+      if (hash === '#tv' || screen === 'tv') {
+        switchToTvView();
+      } else if (hash === '#pedido' || screen === 'pedido') {
+        switchToGuestView();
+      } else {
+        switchToAdminView();
+      }
+    }
+
+    function switchToAdminView() {
+      appMode = 'admin';
+      document.getElementById('admin-view').classList.remove('hidden');
+      document.getElementById('projector-screen-view').classList.add('hidden');
+      document.getElementById('guest-screen-view').classList.add('hidden');
+    }
+
+    function switchToTvView() {
+      appMode = 'tv';
+      document.getElementById('admin-view').classList.add('hidden');
+      document.getElementById('projector-screen-view').classList.remove('hidden');
+      document.getElementById('guest-screen-view').classList.add('hidden');
+      updateTvDisplays();
+    }
+
+    function switchToGuestView() {
+      appMode = 'guest';
+      document.getElementById('admin-view').classList.add('hidden');
+      document.getElementById('projector-screen-view').classList.add('hidden');
+      document.getElementById('guest-screen-view').classList.remove('hidden');
+    }
+
+    function openProjectorWindow() {
+      const tvUrl = window.location.origin + window.location.pathname + '#tv';
+      window.open(tvUrl, 'KaraokeBrisaProjetor', 'width=1280,height=720,menubar=no,toolbar=no,location=no');
+    }
+
+    /* ============================================================
+     * YouTube IFrame API
+     * ============================================================ */
+    function onYouTubeIframeAPIReady() {
+      // Player do Operador
+      player = new YT.Player('youtube-player', {
+        height: '100%',
+        width: '100%',
+        playerVars: {
+          autoplay: 1,
+          controls: 1,
+          rel: 0,
+          modestbranding: 1
+        },
+        events: {
+          'onReady': () => { isPlayerReady = true; },
+          'onStateChange': onPlayerStateChange
+        }
+      });
+
+      // Player do Telão
+      if (document.getElementById('tv-player')) {
+        tvPlayer = new YT.Player('tv-player', {
+          height: '100%',
+          width: '100%',
+          playerVars: {
+            autoplay: 1,
+            controls: 0,
+            rel: 0,
+            modestbranding: 1
+          },
+          events: {
+            'onReady': () => { isTvPlayerReady = true; },
+            'onStateChange': onTvPlayerStateChange
+          }
+        });
+      }
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.PLAYING) {
+        isPlaying = true;
+        document.getElementById('admin-eq')?.classList.remove('hidden');
+      } else if (event.data === YT.PlayerState.PAUSED) {
+        isPlaying = false;
+        document.getElementById('admin-eq')?.classList.add('hidden');
+      } else if (event.data === YT.PlayerState.ENDED) {
+        triggerEndSongWithScore();
+      }
+    }
+
+    function onTvPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.ENDED) {
+        triggerEndSongWithScore();
+      }
+    }
+
+    /* ============================================================
+     * Controle de Músicas e Fila
+     * ============================================================ */
+    function extractVideoId(url) {
+      if (!url) return null;
+      url = url.trim();
+      if (/^[a-zA-Z0-9_-]{11}$/.test(url)) return url;
+      const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([^"&?\/\s]{11})/;
+      const match = url.match(regExp);
+      return match ? match[1] : null;
+    }
+
+    function addSongFromAdmin() {
+      const singerInput = document.getElementById('input-admin-singer');
+      const queryInput = document.getElementById('input-admin-query');
+      
+      const singer = singerInput.value.trim() || 'Cantor do Brisa';
+      const videoId = extractVideoId(queryInput.value);
+
+      if (!videoId) {
+        showToast('Link ou ID do YouTube inválido!');
+        return;
+      }
+
+      const newSong = {
+        id: Date.now().toString(),
+        singer: singer,
+        title: `Música do YouTube (${videoId})`,
+        videoId: videoId
+      };
+
+      queue.push(newSong);
+      singerInput.value = '';
+      queryInput.value = '';
+
+      renderQueue();
+      broadcastAction('SYNC_QUEUE', { queue, currentSong });
+      showToast('Música adicionada à fila!');
+    }
+
+    function playNextSong() {
+      if (queue.length === 0) {
+        showToast('A fila está vazia!');
+        return;
+      }
+
+      currentSong = queue.shift();
+      renderQueue();
+      renderCurrentSong();
+      updateTvDisplays();
+
+      if (isPlayerReady && player) {
+        player.loadVideoById(currentSong.videoId);
+        document.getElementById('player-placeholder')?.classList.add('hidden');
+      }
+
+      if (isTvPlayerReady && tvPlayer) {
+        tvPlayer.loadVideoById(currentSong.videoId);
+        document.getElementById('tv-idle-screen')?.classList.add('hidden');
+      }
+
+      broadcastAction('SYNC_QUEUE', { queue, currentSong });
+    }
+
+    function togglePlayPause() {
+      if (!player || !isPlayerReady) return;
+      if (isPlaying) {
+        player.pauseVideo();
+        if (tvPlayer && isTvPlayerReady) tvPlayer.pauseVideo();
+      } else {
+        player.playVideo();
+        if (tvPlayer && isTvPlayerReady) tvPlayer.playVideo();
+      }
+    }
+
+    function skipIntro() {
+      if (!player || !isPlayerReady) return;
+      const current = player.getCurrentTime();
+      player.seekTo(current + 15, true);
+      if (tvPlayer && isTvPlayerReady) tvPlayer.seekTo(current + 15, true);
+      showToast('+15s pulados');
+    }
+
+    function restartCurrentSong() {
+      if (!player || !isPlayerReady) return;
+      player.seekTo(0, true);
+      if (tvPlayer && isTvPlayerReady) tvPlayer.seekTo(0, true);
+      showToast('Música reiniciada');
+    }
+
+    function removeFromQueue(index) {
+      queue.splice(index, 1);
+      renderQueue();
+      broadcastAction('SYNC_QUEUE', { queue, currentSong });
+    }
+
+    function moveUpQueue(index) {
+      if (index <= 0) return;
+      const item = queue.splice(index, 1)[0];
+      queue.splice(index - 1, 0, item);
+      renderQueue();
+      broadcastAction('SYNC_QUEUE', { queue, currentSong });
+    }
+
+    function renderCurrentSong() {
+      const singerEl = document.getElementById('current-singer-name');
+      const songEl = document.getElementById('current-song-title');
+      const badge = document.getElementById('player-status-badge');
+
+      if (currentSong) {
+        if (singerEl) singerEl.textContent = currentSong.singer;
+        if (songEl) songEl.textContent = currentSong.title;
+        if (badge) badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400"></span> Ao Vivo no Palco`;
+      } else {
+        if (singerEl) singerEl.textContent = 'Ninguém cantando no momento';
+        if (songEl) songEl.textContent = 'Adicione músicas à fila abaixo';
+        if (badge) badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-zinc-500"></span> Aguardando início`;
+      }
+    }
+
+    function renderQueue() {
+      const listEl = document.getElementById('queue-list');
+      const countEl = document.getElementById('queue-count-badge');
+      if (!listEl) return;
+
+      countEl.textContent = `${queue.length} ${queue.length === 1 ? 'música' : 'músicas'}`;
+
+      if (queue.length === 0) {
+        listEl.innerHTML = `
+          <div class="py-12 text-center text-zinc-500">
+            <i data-lucide="music-2" class="w-8 h-8 mx-auto mb-2 opacity-40"></i>
+            <p class="text-xs font-semibold">Fila vazia</p>
+            <p class="text-[10px] mt-0.5">Use o campo abaixo ou compartilhe o QR Code</p>
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      listEl.innerHTML = queue.map((item, idx) => `
+        <div class="p-3 rounded-xl bg-zinc-900/80 border border-zinc-800/80 hover:border-brand-yellow/50 flex items-center justify-between gap-3 transition-all group">
+          <div class="flex items-center gap-3 min-w-0">
+            <span class="w-6 h-6 rounded-lg bg-black/60 text-brand-yellow font-black text-xs flex items-center justify-center shrink-0">
+              ${idx + 1}
+            </span>
+            <div class="min-w-0">
+              <p class="text-xs font-black text-white truncate group-hover:text-brand-yellow transition-colors">${item.singer}</p>
+              <p class="text-[11px] text-zinc-400 truncate">${item.title}</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 shrink-0">
+            ${idx > 0 ? `
+              <button onclick="moveUpQueue(${idx})" class="p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300" title="Subir na fila">
+                <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+              </button>
+            ` : ''}
+            <button onclick="removeFromQueue(${idx})" class="p-1.5 rounded-lg bg-zinc-800 hover:bg-red-950 text-zinc-400 hover:text-red-400" title="Remover">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    function updateTvDisplays() {
+      const tvSinger = document.getElementById('tv-current-singer');
+      const tvUpNextBadge = document.getElementById('tv-up-next-badge');
+      const tvUpNextSinger = document.getElementById('tv-up-next-singer');
+      const tvUpNextTitle = document.getElementById('tv-up-next-title');
+      const tvIdle = document.getElementById('tv-idle-screen');
+
+      if (currentSong) {
+        if (tvSinger) tvSinger.textContent = currentSong.singer;
+        if (tvIdle) tvIdle.classList.add('hidden');
+      } else {
+        if (tvSinger) tvSinger.textContent = 'Aguardando Cantor...';
+        if (tvIdle) tvIdle.classList.remove('hidden');
+      }
+
+      if (queue.length > 0 && tvUpNextBadge) {
+        tvUpNextBadge.classList.remove('hidden');
+        if (tvUpNextSinger) tvUpNextSinger.textContent = queue[0].singer;
+        if (tvUpNextTitle) tvUpNextTitle.textContent = queue[0].title;
+      } else if (tvUpNextBadge) {
+        tvUpNextBadge.classList.add('hidden');
+      }
+    }
+
+    /* ============================================================
+     * Sistema de Pontuação ao Final da Canção
+     * ============================================================ */
+    function triggerEndSongWithScore() {
+      if (!currentSong) return;
+
+      const randomScore = (Math.floor(Math.random() * 18) + 82) / 10; // 8.2 a 9.9
+      const finishedSinger = currentSong.singer;
+      const finishedTitle = currentSong.title;
+
+      showScoreOverlay(randomScore, finishedSinger, finishedTitle);
+      broadcastAction('TRIGGER_SCORE', {
+        score: randomScore,
+        singer: finishedSinger,
+        title: finishedTitle
+      });
+
+      // Limpa cantor atual e inicia próximo após contagem
+      currentSong = null;
+      renderCurrentSong();
+      renderQueue();
+    }
+
+    function showScoreOverlay(score, singer, title) {
+      const tvOverlay = document.getElementById('tv-score-overlay');
+      const guestVoting = document.getElementById('guest-voting-card');
+
+      if (tvOverlay) {
+        document.getElementById('tv-score-singer-name').textContent = singer;
+        document.getElementById('tv-score-song-title').textContent = title;
+        document.getElementById('tv-score-total-val').textContent = score.toFixed(1);
+        tvOverlay.classList.remove('hidden');
+      }
+
+      if (guestVoting) {
+        document.getElementById('guest-vote-singer').textContent = singer;
+        document.getElementById('guest-vote-song').textContent = title;
+        guestVoting.classList.remove('hidden');
+        document.getElementById('guest-score-buttons')?.classList.remove('hidden');
+        document.getElementById('guest-voted-feedback')?.classList.add('hidden');
+      }
+
+      let countdown = 12;
+      if (votingTimer) clearInterval(votingTimer);
+
+      votingTimer = setInterval(() => {
+        countdown--;
+        const tvTimer = document.getElementById('tv-score-timer-countdown');
+        const guestTimer = document.getElementById('guest-vote-timer');
+
+        if (tvTimer) tvTimer.textContent = `${countdown}s`;
+        if (guestTimer) guestTimer.textContent = `${countdown}s`;
+
+        if (countdown <= 0) {
+          clearInterval(votingTimer);
+          if (tvOverlay) tvOverlay.classList.add('hidden');
+          if (guestVoting) guestVoting.classList.add('hidden');
+
+          if (appMode === 'admin' && queue.length > 0) {
+            playNextSong();
+          }
+        }
+      }, 1000);
+    }
+
+    function submitGuestScore(score) {
+      document.getElementById('guest-score-buttons')?.classList.add('hidden');
+      document.getElementById('guest-voted-feedback')?.classList.remove('hidden');
+      broadcastAction('SUBMIT_VOTE', { score });
+      showToast(`Você deu nota ${score}!`);
+    }
+
+    /* ============================================================
+     * Pedidos via Celular (Convidado)
+     * ============================================================ */
+    function submitGuestOrder() {
+      const singer = document.getElementById('guest-input-singer').value.trim() || 'Convidado';
+      const songInput = document.getElementById('guest-input-song').value.trim();
+
+      if (!songInput) {
+        showToast('Digite o nome ou cole o link da música');
+        return;
+      }
+
+      const videoId = extractVideoId(songInput) || 'ePjtnST9U-U';
+      const order = {
+        id: Date.now().toString(),
+        singer: singer,
+        title: songInput.includes('http') ? 'Música Pedida pelo Celular' : songInput,
+        videoId: videoId
+      };
+
+      broadcastAction('NEW_ORDER', { order });
+      document.getElementById('guest-input-song').value = '';
+      showToast('Pedido enviado para a fila do palco!');
+    }
+
+    function quickPick(title, artist, videoId) {
+      const singer = document.getElementById('guest-input-singer').value.trim() || 'Convidado';
+      const order = {
+        id: Date.now().toString(),
+        singer: singer,
+        title: `${title} - ${artist} (Karaokê)`,
+        videoId: videoId
+      };
+      broadcastAction('NEW_ORDER', { order });
+      showToast(`${title} adicionada à fila!`);
+    }
+
+    /* ============================================================
+     * Modais e QR Codes
+     * ============================================================ */
+    function initQrCodes() {
+      const guestUrl = window.location.origin + window.location.pathname + '#pedido';
+      
+      const modalContainer = document.getElementById('modal-qrcode-container');
+      if (modalContainer) {
+        modalContainer.innerHTML = '';
+        new QRCode(modalContainer, {
+          text: guestUrl,
+          width: 180,
+          height: 180,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.M
+        });
+        document.getElementById('modal-qr-url-text').textContent = guestUrl;
+      }
+
+      const tvContainer = document.getElementById('tv-idle-qrcode');
+      if (tvContainer) {
+        tvContainer.innerHTML = '';
+        new QRCode(tvContainer, {
+          text: guestUrl,
+          width: 140,
+          height: 140,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      }
+    }
+
+    function openQrModal() {
+      document.getElementById('modal-qrcode')?.classList.remove('hidden');
+    }
+
+    function closeQrModal() {
+      document.getElementById('modal-qrcode')?.classList.add('hidden');
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const msgEl = document.getElementById('toast-message');
+      if (!toast || !msgEl) return;
+
+      msgEl.textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
